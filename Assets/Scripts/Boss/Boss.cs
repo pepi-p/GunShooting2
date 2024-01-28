@@ -26,7 +26,6 @@ public class Boss : MonoBehaviour
     [SerializeField] private float bossGunShotDamage;
 
     [Space(5), Header("Assign")]
-    [SerializeField] private Transform beamCannon;
     [SerializeField] private Transform[] armL; // 0 : Zaxis, 1 : Xaxis, 2 : Yaxis
     [SerializeField] private Transform[] armR; // 0 : Zaxis, 1 : Xaxis, 2 : Yaxis
     [SerializeField] private Transform muzzleL;
@@ -59,9 +58,6 @@ public class Boss : MonoBehaviour
         foreach (var target in bossTargets) maxHP += target.hp;
         hp = maxHP;
         
-        // ビーム砲の初期状態を保持
-        beamCannonQuaternion = beamCannon.transform.localRotation;
-        
         bossHPbarBackGround.gameObject.SetActive(true);
     }
 
@@ -84,13 +80,10 @@ public class Boss : MonoBehaviour
     private void NextPhase()
     {
         phase++;
-        var count = 0;
         foreach (var target in bossTargets)
         {
             target.SetEnable(target.phase == phase);
-            if (target.phase == phase) count++;
         }
-        if (count <= 0) result.DisplayResult();
     }
 
     public void Damage()

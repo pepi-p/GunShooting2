@@ -22,7 +22,6 @@ public class BossTarget : MonoBehaviour
     [SerializeField] private float maxHP;
     [SerializeField] private int score;
     public int phase;
-    [SerializeField] private bool isDamageMotion;
 
     [Space(5), Header("Event")]
     [SerializeField] private UnityEvent DestoryEvent;
@@ -54,7 +53,7 @@ public class BossTarget : MonoBehaviour
         if (hp <= 0)
         {
             SetEnable(false);
-            if (isDamageMotion) DestoryEvent.Invoke();
+            DestoryEvent.Invoke();
             scoreManager.AddScore(score);
         }
     }

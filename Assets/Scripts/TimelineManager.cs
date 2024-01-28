@@ -39,9 +39,11 @@ public class TimelineManager : MonoBehaviour
         
     public void NextPhase()
     {
+        superArmor = false;
         player.allowShot = true;
         director.Pause();
         phaseCount++;
+        if (phaseCount % 2 == 0) player.allowShot = false;
         director.playableAsset = phases[phaseCount];
         director.time = 0;
         director.Play();
