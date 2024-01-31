@@ -70,8 +70,6 @@ public class SpawnManager : MonoBehaviour
     {
         StartCoroutine(DisplayWave("Wave 0 / 3"));
         yield return new WaitForSeconds(3.0f);
-        yield break;
-
         
         //=======================================WAVE 0
         Enemy1Spawn(11);
@@ -190,7 +188,7 @@ public class SpawnManager : MonoBehaviour
 
     public void PlayerMoveStop()
     {
-        // playertimeline.Pause();
+        playertimeline.Pause();
     }
 }
 

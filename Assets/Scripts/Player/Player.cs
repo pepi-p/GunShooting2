@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
 {
     [Header("Class")]
     [SerializeField] private Arduino arduino;
+    [SerializeField] private SerialHandler serialHandler;
     [SerializeField] private UIManager uiManager;
     [SerializeField] private ScoreManager scoreManager;
     [SerializeField] private Result result;
@@ -45,7 +46,7 @@ public class Player : MonoBehaviour
     private Color damageColor;
     private float shotCoolDown;
     private float reticleValue;
-    private float ammo = 50;
+    private int ammo = 100;
     private float maxHP;
     private float shotFlashDelay;
     private float hideWeight = 0;
@@ -86,9 +87,9 @@ public class Player : MonoBehaviour
             else if (magazineReload)
             {
                 magazineReload = false;
-                ammo = 50;
+                ammo = 100;
                 arduino.MotorStop(true);
-                uiManager.SetAmmoValue((int)ammo);
+                uiManager.SetAmmoValue(ammo);
                 reloading.GetComponent<Image>().enabled = false;
             }
         }
@@ -138,7 +139,6 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space) || arduino.hide || magazineReload) hideWeight = Mathf.Lerp(hideWeight, 1, Time.deltaTime * 10);
         else hideWeight = Mathf.Lerp(hideWeight, 0, Time.deltaTime * 10);
-        // if(hideWeight > 0.8f) scoreManager.AddScore(-1);
 
         this.tag = hideWeight > 0.4f ? "Untagged" : "Player";
 
@@ -154,8 +154,8 @@ public class Player : MonoBehaviour
         isReload = false;
         reloading.enabled = false;
         reticleImage.GetComponent<Image>().enabled = true;
-        ammo = 50;
-        uiManager.SetAmmoValue((int)ammo);
+        ammo = 100;
+        uiManager.SetAmmoValue(ammo);
     }
 
     private void Shot()
@@ -169,11 +169,12 @@ public class Player : MonoBehaviour
         reticleValue = 1;
         shotFlashDelay = 1;
         audioSource.PlayOneShot(shotSE);
-        ammo -= 0.5f;
+        ammo--;
         if (ammo <= 0) arduino.MotorStop(true);
         scoreManager.shotCount++;
         if (infinityAmmo && ammo == 0) ammo = 9;
-        uiManager.SetAmmoValue((int)ammo);
+        uiManager.SetAmmoValue(ammo);
+        serialHandler.Write(ammo.ToString() + "\n");
         var isHit = Physics.Raycast(cam.ScreenPointToRay(pointerPos), out var hit, 50f, 1);
         Instantiate(particle, hit.point, Quaternion.LookRotation(cam.transform.position - hit.point));
         Instantiate(bullet, (this.transform.position + Vector3.up * 0.9f), Quaternion.LookRotation(hit.point - (this.transform.position + Vector3.up * 0.9f)));

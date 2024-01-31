@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject[] timer3;
     [SerializeField] private GameObject[] ammo0;
     [SerializeField] private GameObject[] ammo1;
+    [SerializeField] private GameObject ammo100;
     [SerializeField] private GameObject[] score0;
     [SerializeField] private GameObject[] score1;
     [SerializeField] private GameObject[] score2;
@@ -51,7 +52,8 @@ public class UIManager : MonoBehaviour
 
     public void SetAmmoValue(int value)
     {
-        SetValue(ammo0, value / 10);
+        ammo100.SetActive(value >= 100);
+        SetValue(ammo0, (value / 10) % 10);
         SetValue(ammo1, value % 10);
     }
 

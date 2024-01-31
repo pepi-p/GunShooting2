@@ -33,6 +33,7 @@ public class Enemy : MonoBehaviour
     private Animator animator;
     protected float maxHP = 1;
     protected EnemyTarget targetUI;
+    private Vector3 pos;
 
     private void Start()
     {
@@ -56,14 +57,19 @@ public class Enemy : MonoBehaviour
         targetUI.Damage(hp / maxHP);
         if (hp <= 0)
         {
+            pos = this.transform.position;
             timeline.Pause();
             if (eventFrame[timelineCount].z > 0)
             {
                 timeline.time = eventFrame[timelineCount].z / 60f;
                 timeline.Play();
+                this.transform.position = pos;
                 scoreManager.AddScore(score);
             }
-            else animator.Play("Destroy");
+            else
+            {
+                animator.Play("Destroy");
+            }
         }
     }
 

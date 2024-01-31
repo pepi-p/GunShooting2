@@ -8,6 +8,7 @@ using UnityEngine.Timeline;
 
 public class TimelineManager : MonoBehaviour
 {
+    [SerializeField] private SerialHandler serialHandler;
     [SerializeField] private PlayableDirector director;
     [SerializeField] private TimelineAsset[] phases;
     [SerializeField] private int phaseCount = 0;
@@ -43,7 +44,12 @@ public class TimelineManager : MonoBehaviour
         player.allowShot = true;
         director.Pause();
         phaseCount++;
-        if (phaseCount % 2 == 0) player.allowShot = false;
+        if (phaseCount % 2 == 0)
+        {
+            serialHandler.Write("201\n");
+            player.allowShot = false;
+        }
+        else serialHandler.Write("202\n");
         director.playableAsset = phases[phaseCount];
         director.time = 0;
         director.Play();
@@ -91,10 +97,12 @@ public class TimelineManager : MonoBehaviour
     
     private IEnumerator ShotMissileCoroutine(int count)
     {
+        serialHandler.Write("303\n");
         superArmor = true;
         director.Pause();
         missileManager.ShotMissile(count);
         yield return new WaitForSecondsRealtime(10f);
+        serialHandler.Write("304\n");
         superArmor = false;
         if (!isStop) director.Play();
     }

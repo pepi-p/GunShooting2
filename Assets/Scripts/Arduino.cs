@@ -24,7 +24,7 @@ public class Arduino : MonoBehaviour
     // true : モーターを止める, false : モーターを動かす
     public void MotorStop(bool value)
     {
-        serialHandler.Write(value ? "a" : "b");
+        serialHandler.Write(value ? "302\n" : "301\n");
     }
 
     //受信した信号(message)に対する処理
