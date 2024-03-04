@@ -66,6 +66,8 @@ public class Player : MonoBehaviour
         Cursor.visible = false;
         maxHP = hp;
         damageColor = damageImage.color;
+
+        StartCoroutine(UpdateAmmo());
     }
 
     private void Update()
@@ -81,14 +83,15 @@ public class Player : MonoBehaviour
             if ((!easyReload && arduino.magazine) || (easyReload && arduino.hide))
             {
                 magazineReload = true;
-                arduino.MotorStop(false);
+                StartCoroutine(MortorSetEnable(false));
                 reloading.GetComponent<Image>().enabled = true;
             }
             else if (magazineReload)
             {
                 magazineReload = false;
                 ammo = 100;
-                arduino.MotorStop(true);
+                StartCoroutine(MortorSetEnable(true));
+                serialHandler.Write("100\n");
                 uiManager.SetAmmoValue(ammo);
                 reloading.GetComponent<Image>().enabled = false;
             }
@@ -170,11 +173,12 @@ public class Player : MonoBehaviour
         shotFlashDelay = 1;
         audioSource.PlayOneShot(shotSE);
         ammo--;
-        if (ammo <= 0) arduino.MotorStop(true);
+        if (ammo <= 0) StartCoroutine(MortorSetEnable(false));
         scoreManager.shotCount++;
         if (infinityAmmo && ammo == 0) ammo = 9;
         uiManager.SetAmmoValue(ammo);
-        serialHandler.Write(ammo.ToString() + "\n");
+        // serialHandler.Write(ammo.ToString() + "\n");
+        // StartCoroutine(SendAmmo());
         var isHit = Physics.Raycast(cam.ScreenPointToRay(pointerPos), out var hit, 50f, 1);
         Instantiate(particle, hit.point, Quaternion.LookRotation(cam.transform.position - hit.point));
         Instantiate(bullet, (this.transform.position + Vector3.up * 0.9f), Quaternion.LookRotation(hit.point - (this.transform.position + Vector3.up * 0.9f)));
@@ -221,5 +225,26 @@ public class Player : MonoBehaviour
     public float GetHPRate()
     {
         return hp / maxHP;
+    }
+
+    private IEnumerator MortorSetEnable(bool enable)
+    {
+        while (true)
+        {
+            if (arduino.mortorEnable != enable) arduino.MotorStop(enable);
+            else break;
+
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
+    private IEnumerator UpdateAmmo()
+    {
+        while (true)
+        {
+            if (arduino.displayAmmo != ammo) serialHandler.Write(ammo.ToString() + "\n");
+
+            yield return new WaitForSeconds(0.2f);
+        }
     }
 }

@@ -11,7 +11,7 @@ public class TimelineManager : MonoBehaviour
     [SerializeField] private SerialHandler serialHandler;
     [SerializeField] private PlayableDirector director;
     [SerializeField] private TimelineAsset[] phases;
-    [SerializeField] private int phaseCount = 0;
+    public int phaseCount = 0;
     [SerializeField] private Animator bossAnimator;
     [SerializeField] private Boss boss;
     [SerializeField] private Player player;
@@ -97,12 +97,10 @@ public class TimelineManager : MonoBehaviour
     
     private IEnumerator ShotMissileCoroutine(int count)
     {
-        serialHandler.Write("303\n");
         superArmor = true;
         director.Pause();
         missileManager.ShotMissile(count);
         yield return new WaitForSecondsRealtime(10f);
-        serialHandler.Write("304\n");
         superArmor = false;
         if (!isStop) director.Play();
     }

@@ -558,6 +558,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbfab2a837507514396f1f2f0fd7ada0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  arduino: {fileID: 1095070522}
+  serialHandler: {fileID: 1095070521}
 --- !u!4 &182276486
 Transform:
   m_ObjectHideFlags: 0
@@ -3003,7 +3005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7baec0f2b23626448b6feae8eb5ff91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baudRate: 115200
+  baudRate: 57600
 --- !u!114 &1095070522
 MonoBehaviour:
   m_ObjectHideFlags: 0

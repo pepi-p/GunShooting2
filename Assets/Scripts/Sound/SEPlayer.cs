@@ -15,7 +15,7 @@ public class SEPlayer : MonoBehaviour
 
     public void PlaySound(int idx)
     {
-        Debug.Log(clips[idx].name);
+        // Debug.Log(clips[idx].name);
         audioSource.PlayOneShot(clips[idx]);
     }
 }

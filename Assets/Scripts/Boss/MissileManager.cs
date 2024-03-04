@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 public class MissileManager : MonoBehaviour
 {
     [SerializeField] private Player player;
+    [SerializeField] private SerialHandler serialHandler;
     [SerializeField] private Missile missile;
     [SerializeField] private MissileTarget missileTarget;
     [SerializeField] private Transform shotPos;
@@ -43,7 +44,9 @@ public class MissileManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1.2f);
         Time.timeScale = 0.1f;
+        serialHandler.Write("303\n");
         yield return new WaitForSecondsRealtime(5.0f);
         Time.timeScale = 1.0f;
+        serialHandler.Write("304\n");
     }
 }

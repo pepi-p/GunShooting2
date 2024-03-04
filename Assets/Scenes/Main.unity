@@ -10478,6 +10478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1719774144}
+  serialHandler: {fileID: 1695936148}
   missile: {fileID: 789436257275629971, guid: 1e08d7e7170eb8c4f99f8cfb0cff767c, type: 3}
   missileTarget: {fileID: 1516503373324547993, guid: d70b4b9e8f48b4f4b8a5c841b497a70d, type: 3}
   shotPos: {fileID: 216299425}
@@ -11630,7 +11631,7 @@ PlayableDirector:
   m_GameObject: {fileID: 324627192}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 716d7c6c209c4354bb315623d8e197be, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: c63d775e6402fb543826a2117f581f19, type: 2}
   m_InitialState: 0
   m_WrapMode: 1
   m_DirectorUpdateMode: 1
@@ -11857,7 +11858,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 716d7c6c209c4354bb315623d8e197be, type: 2}
   - {fileID: 11400000, guid: f50d3eb3eb41fba4fb2c86a1899cd3be, type: 2}
   - {fileID: 11400000, guid: 745a1a19a909e2640b37e256fb786462, type: 2}
-  phaseCount: 0
+  phaseCount: -1
   bossAnimator: {fileID: 329101247}
   boss: {fileID: 329101246}
   player: {fileID: 1719774144}
@@ -11865,7 +11866,7 @@ MonoBehaviour:
   bossModel: {fileID: 1504304792}
   bossBGM: {fileID: 164447060}
   zakoBGM: {fileID: 1093039816}
-  superArmor: 1
+  superArmor: 0
 --- !u!1 &329101243 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6feb05d23fc605548932163312b6bafb, type: 3}
@@ -21188,8 +21189,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ShadowmapMode: 0
   m_Cameras:
-  - {fileID: 0}
-  m_CurrentCamera: {fileID: 0}
+  - {fileID: 963194227}
+  m_CurrentCamera: {fileID: 963194227}
   m_Size: {x: 10, y: 10, z: 20}
   m_SpotNear: 0.05
   m_SpotFar: 1
@@ -23599,8 +23600,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ShadowmapMode: 0
   m_Cameras:
-  - {fileID: 0}
-  m_CurrentCamera: {fileID: 0}
+  - {fileID: 963194227}
+  m_CurrentCamera: {fileID: 963194227}
   m_Size: {x: 10, y: 10, z: 20}
   m_SpotNear: 0.05
   m_SpotFar: 1
@@ -33019,8 +33020,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ShadowmapMode: 0
   m_Cameras:
-  - {fileID: 0}
-  m_CurrentCamera: {fileID: 0}
+  - {fileID: 963194227}
+  m_CurrentCamera: {fileID: 963194227}
   m_Size: {x: 10, y: 10, z: 20}
   m_SpotNear: 0.05
   m_SpotFar: 1.1
@@ -33430,8 +33431,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ShadowmapMode: 0
   m_Cameras:
-  - {fileID: 0}
-  m_CurrentCamera: {fileID: 0}
+  - {fileID: 963194227}
+  m_CurrentCamera: {fileID: 963194227}
   m_Size: {x: 10, y: 10, z: 20}
   m_SpotNear: 0.05
   m_SpotFar: 1
@@ -34211,8 +34212,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ShadowmapMode: 0
   m_Cameras:
-  - {fileID: 0}
-  m_CurrentCamera: {fileID: 0}
+  - {fileID: 963194227}
+  m_CurrentCamera: {fileID: 963194227}
   m_Size: {x: 10, y: 10, z: 20}
   m_SpotNear: 0.05
   m_SpotFar: 1.1
@@ -36240,8 +36241,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ShadowmapMode: 0
   m_Cameras:
-  - {fileID: 0}
-  m_CurrentCamera: {fileID: 0}
+  - {fileID: 963194227}
+  m_CurrentCamera: {fileID: 963194227}
   m_Size: {x: 10, y: 10, z: 20}
   m_SpotNear: 0.05
   m_SpotFar: 1.1
@@ -38051,8 +38052,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ShadowmapMode: 0
   m_Cameras:
-  - {fileID: 0}
-  m_CurrentCamera: {fileID: 0}
+  - {fileID: 963194227}
+  m_CurrentCamera: {fileID: 963194227}
   m_Size: {x: 10, y: 10, z: 20}
   m_SpotNear: 0.05
   m_SpotFar: 1.1
@@ -39530,8 +39531,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ShadowmapMode: 0
   m_Cameras:
-  - {fileID: 0}
-  m_CurrentCamera: {fileID: 0}
+  - {fileID: 963194227}
+  m_CurrentCamera: {fileID: 963194227}
   m_Size: {x: 10, y: 10, z: 20}
   m_SpotNear: 0.05
   m_SpotFar: 1
@@ -41850,8 +41851,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ShadowmapMode: 0
   m_Cameras:
-  - {fileID: 0}
-  m_CurrentCamera: {fileID: 0}
+  - {fileID: 963194227}
+  m_CurrentCamera: {fileID: 963194227}
   m_Size: {x: 10, y: 10, z: 20}
   m_SpotNear: 0.05
   m_SpotFar: 1
@@ -48408,7 +48409,7 @@ MonoBehaviour:
   scoreManager: {fileID: 710179522}
   targetUI: {fileID: 2713725845919572202, guid: 7f93f1f4a687c92449b47be4c809069f, type: 3}
   rootUI: {fileID: 563665705}
-  maxHP: 100
+  maxHP: 500
   score: 5000
   phase: 3
   DestoryEvent:
@@ -53158,8 +53159,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ShadowmapMode: 0
   m_Cameras:
-  - {fileID: 0}
-  m_CurrentCamera: {fileID: 0}
+  - {fileID: 963194227}
+  m_CurrentCamera: {fileID: 963194227}
   m_Size: {x: 10, y: 10, z: 20}
   m_SpotNear: 0.05
   m_SpotFar: 1
@@ -54546,7 +54547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7baec0f2b23626448b6feae8eb5ff91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baudRate: 115200
+  baudRate: 57600
 --- !u!114 &1695936149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54568,6 +54569,8 @@ MonoBehaviour:
   debug1: 0
   debug2: 0
   magazine: 0
+  mortorEnable: 0
+  displayAmmo: 100
 --- !u!4 &1695936150
 Transform:
   m_ObjectHideFlags: 0
@@ -54966,7 +54969,7 @@ MonoBehaviour:
   bullet: {fileID: 5264371529615483648, guid: 6d3a9426f886df74583bf0935ecde50f, type: 3}
   particle: {fileID: 7633213360735671548, guid: aa3434e40bbb8f24eb3b7521159e2a56, type: 3}
   shotInterval: 0.08
-  shotDamage: 10
+  shotDamage: 1
   hp: 100
   infinityAmmo: 0
   allowShot: 1

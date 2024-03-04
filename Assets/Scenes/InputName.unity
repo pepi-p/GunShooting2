@@ -5108,7 +5108,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arduino: {fileID: 1955559592}
-  mouseDebug: 0
   pointer: {fileID: 1268219350}
   pointerPos: {x: 0, y: 0, z: 0}
   texts:
@@ -8652,7 +8651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7baec0f2b23626448b6feae8eb5ff91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baudRate: 115200
+  baudRate: 57600
 --- !u!114 &1955559592
 MonoBehaviour:
   m_ObjectHideFlags: 0

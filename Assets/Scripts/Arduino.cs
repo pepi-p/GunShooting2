@@ -14,6 +14,8 @@ public class Arduino : MonoBehaviour
     public bool debug1;
     public bool debug2;
     public bool magazine;
+    public bool mortorEnable;
+    public int displayAmmo = 100;
 
     void Start()
     {
@@ -21,10 +23,10 @@ public class Arduino : MonoBehaviour
         serialHandler.OnDataReceived += OnDataReceived;
     }
     
-    // true : モーターを止める, false : モーターを動かす
+    // true : モーターを動かす, false : モーターを止める
     public void MotorStop(bool value)
     {
-        serialHandler.Write(value ? "302\n" : "301\n");
+        serialHandler.Write(value ? "301\n" : "302\n");
     }
 
     //受信した信号(message)に対する処理
@@ -41,6 +43,8 @@ public class Arduino : MonoBehaviour
             debug1 = (int.Parse(data[5]) != 0);
             debug2 = (int.Parse(data[6]) != 0);
             magazine = (int.Parse(data[7]) != 0);
+            mortorEnable = (int.Parse(data[8]) != 0);
+            displayAmmo = int.Parse(data[9]);
             pitch = pitch_raw + Setting.pitchOffset;
         }
         catch (System.Exception e)

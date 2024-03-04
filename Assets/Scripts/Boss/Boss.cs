@@ -249,6 +249,6 @@ public class Boss : MonoBehaviour
     /// <param name="enable">1-true / 0-false</param>
     public void SetSuperArmor(int enable)
     {
-        timelineManager.superArmor = (enable != 0);
+        if (timelineManager.phaseCount != 3) timelineManager.superArmor = (enable != 0);
     }
 }

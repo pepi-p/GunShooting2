@@ -8,10 +8,24 @@ public class TitleManager : MonoBehaviour
     public static bool easyReload;
 
     [SerializeField] private Arduino arduino;
+    [SerializeField] private SerialHandler serialHandler;
+
+    private void Start()
+    {
+        StartCoroutine(GunReset());
+    }
+
+    private IEnumerator GunReset()
+    {
+        yield return new WaitForSeconds(2);
+        serialHandler.Write("100\n");
+        yield return new WaitForSeconds(0.5f);
+        serialHandler.Write("201\n");
+    }
 
     private void Update()
     {
-        easyReload = arduino.magazine;
+        // easyReload = arduino.magazine;
     }
     
     public void StartGame()
