@@ -1,8 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -37,20 +34,15 @@ public class Boss : MonoBehaviour
     [SerializeField] private BossTarget[] bossTargets;
     [SerializeField] private BossGun[] bossGuns;
     [SerializeField] private SEPlayer sePlayer; 
-    
-    private Animator animator;
 
     private float hp;
     private float maxHP = 0;
     private int phase = 0;
     private float hpBarAlpha;
     private float gatlingRotate = 0;
-
-    private Quaternion beamCannonQuaternion;
     
     private void Start()
     {
-        animator = GetComponent<Animator>();
         result.isBossBattle = true;
 
         // HPを初期化

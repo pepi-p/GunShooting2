@@ -10478,6 +10478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1719774144}
+  scoreManager: {fileID: 710179522}
   serialHandler: {fileID: 1695936148}
   missile: {fileID: 789436257275629971, guid: 1e08d7e7170eb8c4f99f8cfb0cff767c, type: 3}
   missileTarget: {fileID: 1516503373324547993, guid: d70b4b9e8f48b4f4b8a5c841b497a70d, type: 3}
@@ -54969,21 +54970,14 @@ MonoBehaviour:
   bullet: {fileID: 5264371529615483648, guid: 6d3a9426f886df74583bf0935ecde50f, type: 3}
   particle: {fileID: 7633213360735671548, guid: aa3434e40bbb8f24eb3b7521159e2a56, type: 3}
   shotInterval: 0.08
-  shotDamage: 1
+  shotDamage: 100
   hp: 100
   infinityAmmo: 0
   allowShot: 1
   camParent: {fileID: 1693639798}
-  reticle: {fileID: 1164683603}
-  reticleImage: {fileID: 999338791}
-  reticleSub:
-  - {fileID: 1666030021}
-  - {fileID: 821192429}
-  - {fileID: 614572516}
-  - {fileID: 379991852}
-  ui: {fileID: 1684794005}
+  reticle: {fileID: 0}
+  uiRoot: {fileID: 0}
   playerHPbar: {fileID: 622319192}
-  enemyHPbar: {fileID: 199956359}
   empty: {fileID: 1753862686}
   reloading: {fileID: 109637551}
   damageImage: {fileID: 105724594}

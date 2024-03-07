@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using Random = UnityEngine.Random;
 
 public class MissileManager : MonoBehaviour
 {
     [SerializeField] private Player player;
+    [SerializeField] private ScoreManager scoreManager;
     [SerializeField] private SerialHandler serialHandler;
     [SerializeField] private Missile missile;
     [SerializeField] private MissileTarget missileTarget;
@@ -32,8 +34,7 @@ public class MissileManager : MonoBehaviour
             theta += Random.Range(-0.06f, 0.06f);
             var mis = Instantiate(missile, shotPos.position, Quaternion.LookRotation(shotPos.up * Mathf.Cos(theta) + shotPos.right * Mathf.Sin(theta)));
             var target = Instantiate(missileTarget, canvas);
-            mis.player = player;
-            mis.targetUI = target.gameObject;
+            mis.Setup(player, target.gameObject, scoreManager);
             target.target = mis.transform;
         }
 

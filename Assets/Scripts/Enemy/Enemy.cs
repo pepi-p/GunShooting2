@@ -4,7 +4,7 @@ using UnityEngine.Playables;
 using UnityEngine.SocialPlatforms.Impl;
 
 [Serializable]
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamage
 {
     [Header("Class")]
     public SpawnManager spawnManager;
@@ -50,7 +50,7 @@ public class Enemy : MonoBehaviour
         targetUI.AttackBar(Mathf.Clamp01((float)((timeline.time * 60 - eventFrame[timelineCount].x) / (eventFrame[timelineCount].y - eventFrame[timelineCount].x))));
     }
 
-    public void Hit(float damage)
+    public void AddDamage(float damage)
     {
         if (hp <= 0) return;
         hp -= damage;

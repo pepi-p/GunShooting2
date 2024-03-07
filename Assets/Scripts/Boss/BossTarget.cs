@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-public class BossTarget : MonoBehaviour
+public class BossTarget : MonoBehaviour, IDamage
 {
     [Header("Class")]
     [SerializeField] private Boss boss;
@@ -43,7 +43,7 @@ public class BossTarget : MonoBehaviour
         SetEnable(phase <= 0);
     }
 
-    public void Damage(float damage)
+    public void AddDamage(float damage)
     {
         hp -= damage;
         if (timelineManager.superArmor && hp <= 0) hp = 1;
