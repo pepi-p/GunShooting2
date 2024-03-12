@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// プレイヤー以外のUIの表示
+/// </summary>
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] timer0;
@@ -48,13 +51,6 @@ public class UIManager : MonoBehaviour
             yield return new WaitForSeconds(1);
             time++;
         }
-    }
-
-    public void SetAmmoValue(int value)
-    {
-        ammo100.SetActive(value >= 100);
-        SetValue(ammo0, (value / 10) % 10);
-        SetValue(ammo1, value % 10);
     }
 
     public void DisplayScore(float score)

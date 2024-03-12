@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class Result : MonoBehaviour
 {
+    /*
     [Header("Class")]
     [SerializeField] private ScoreManager scoreManager;
     [SerializeField] private Player player;
@@ -157,4 +158,5 @@ public class Result : MonoBehaviour
             yield return new WaitForSecondsRealtime(1f);
         }
     }
+    */
 }

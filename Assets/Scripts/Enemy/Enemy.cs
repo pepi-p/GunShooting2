@@ -6,6 +6,7 @@ using UnityEngine.SocialPlatforms.Impl;
 [Serializable]
 public class Enemy : MonoBehaviour, IDamage
 {
+    /*
     [Header("Class")]
     public SpawnManager spawnManager;
     public ScoreManager scoreManager;
@@ -91,4 +92,7 @@ public class Enemy : MonoBehaviour, IDamage
         Destroy(this.gameObject);
     }
     // アニメーションからの呼び出し - end
+    */
+    
+    public void AddDamage(float damage) {}
 }

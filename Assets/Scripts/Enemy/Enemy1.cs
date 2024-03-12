@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Enemy1 : Enemy
 {
+    /*
     [Header("Enemy1")]
     [SerializeField] private GameObject turret;
     [SerializeField] private GameObject barrel;
@@ -38,4 +39,5 @@ public class Enemy1 : Enemy
         targetUI.GetComponent<RectTransform>().localScale = Vector3.one;
         hp = maxHP;
     }
+    */
 }

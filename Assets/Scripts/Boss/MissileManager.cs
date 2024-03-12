@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 
 public class MissileManager : MonoBehaviour
 {
+    /*
     [SerializeField] private Player player;
     [SerializeField] private ScoreManager scoreManager;
     [SerializeField] private SerialHandler serialHandler;
@@ -50,4 +51,5 @@ public class MissileManager : MonoBehaviour
         Time.timeScale = 1.0f;
         serialHandler.Write("304\n");
     }
+    */
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Arduino : MonoBehaviour
 {
-    public SerialHandler serialHandler;
+    private SerialHandler _serialHandler;
 
     public float yaw = 0;
     public float pitch = 0;
@@ -17,16 +17,17 @@ public class Arduino : MonoBehaviour
     public bool mortorEnable;
     public int displayAmmo = 100;
 
-    void Start()
+    public Arduino(SerialHandler serialHandler)
     {
+        _serialHandler = serialHandler;
         //信号を受信したときに、そのメッセージの処理を行う
-        serialHandler.OnDataReceived += OnDataReceived;
+        _serialHandler.OnDataReceived += OnDataReceived;
     }
     
     // true : モーターを動かす, false : モーターを止める
     public void MotorStop(bool value)
     {
-        serialHandler.Write(value ? "301\n" : "302\n");
+        _serialHandler.Write(value ? "301\n" : "302\n");
     }
 
     //受信した信号(message)に対する処理
@@ -52,6 +53,4 @@ public class Arduino : MonoBehaviour
             Debug.LogWarning(e.Message); //エラーを表示
         }
     }
-
-    
 }

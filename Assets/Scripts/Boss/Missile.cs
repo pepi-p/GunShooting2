@@ -6,6 +6,7 @@ using Quaternion = UnityEngine.Quaternion;
 
 public class Missile : MonoBehaviour, IDamage
 {
+    /*
     private Player _player;
     private GameObject _targetUI;
     private ScoreManager _scoreManager;
@@ -55,4 +56,7 @@ public class Missile : MonoBehaviour, IDamage
         Destroy(_targetUI.gameObject);
         Destroy(this.gameObject);
     }
+    */
+    
+    public void AddDamage(float damage) {}
 }

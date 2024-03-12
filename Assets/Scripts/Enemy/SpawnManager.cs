@@ -9,6 +9,7 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class SpawnManager : MonoBehaviour
 {
+    /*
     [Header("Class")]
     [SerializeField] private Player player;
     [SerializeField] private ScoreManager scoreManager;
@@ -190,6 +191,7 @@ public class SpawnManager : MonoBehaviour
     {
         playertimeline.Pause();
     }
+    */
 }
 
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy2 : Enemy
 {
+    /*
     [Space(5), Header("Enemy2Setting")]
     [SerializeField] private float shotInterval;
     [SerializeField] private SEPlayer sePlayer;
@@ -71,4 +72,5 @@ public class Enemy2 : Enemy
     {
         StartCoroutine(ShotCoroutine(frame));
     }
+    */
 }

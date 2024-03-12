@@ -8,6 +8,7 @@ using UnityEngine.Timeline;
 
 public class TimelineManager : MonoBehaviour
 {
+    /*
     [SerializeField] private SerialHandler serialHandler;
     [SerializeField] private PlayableDirector director;
     [SerializeField] private TimelineAsset[] phases;
@@ -109,4 +110,5 @@ public class TimelineManager : MonoBehaviour
     {
         director.time = frame / 60f;
     }
+    */
 }

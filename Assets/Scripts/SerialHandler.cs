@@ -8,14 +8,9 @@ public class SerialHandler : MonoBehaviour
 {
     public delegate void SerialDataReceivedEventHandler(string message);
     public event SerialDataReceivedEventHandler OnDataReceived;
-
-    //ポート名
-    //例
-    //Linuxでは/dev/ttyUSB0
-    //windowsではCOM1
-    //Macでは/dev/tty.usbmodem1421など
-    private string portName;
-    public int baudRate    = 9600;
+    
+    [SerializeField] private string portName;
+    [SerializeField] private int baudRate = 57600;
 
     private SerialPort serialPort_;
     private Thread thread_;

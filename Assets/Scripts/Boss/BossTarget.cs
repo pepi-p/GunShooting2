@@ -7,6 +7,7 @@ using UnityEngine.Events;
 
 public class BossTarget : MonoBehaviour, IDamage
 {
+    /*
     [Header("Class")]
     [SerializeField] private Boss boss;
     [SerializeField] private TimelineManager timelineManager;
@@ -64,4 +65,7 @@ public class BossTarget : MonoBehaviour, IDamage
         this.gameObject.tag = value ? "Boss" : "Untagged";
         target.gameObject.SetActive(value);
     }
+    */
+    
+    public void AddDamage(float damage) {}
 }

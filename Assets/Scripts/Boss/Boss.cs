@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 
 public class Boss : MonoBehaviour
 {
+    /*
     [Header("Class")]
     [SerializeField] private Player player;
     [SerializeField] private Result result;
@@ -243,4 +244,5 @@ public class Boss : MonoBehaviour
     {
         if (timelineManager.phaseCount != 3) timelineManager.superArmor = (enable != 0);
     }
+    */
 }

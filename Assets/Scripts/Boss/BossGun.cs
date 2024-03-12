@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BossGun : MonoBehaviour
 {
+    /*
     [SerializeField] private Player player;
     [SerializeField] private EnemyBullet bullet;
     [SerializeField] private Transform muzzle;
@@ -23,4 +24,5 @@ public class BossGun : MonoBehaviour
         Instantiate(bullet, muzzle.transform.position, Quaternion.LookRotation(muzzle.transform.forward));
         if (Mathf.Abs(randomOffset) < 0.05f) player.Hit(shotDamage);
     }
+    */
 }
