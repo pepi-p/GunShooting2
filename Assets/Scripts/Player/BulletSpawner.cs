@@ -15,18 +15,21 @@ namespace Player
         /// <summary>
         /// 弾の生成
         /// </summary>
-        public void Spawn()
+        public void Spawn(Vector3 hitPoint)
         {
-            var bullet = _bulletFactory.Create(playerObj);
-            bullets.Add(bullet);
-        }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Q))
+            // 生成済みで使用していない物があれば再利用
+            foreach (var b in bullets)
             {
-                Spawn();
+                if (!b.Enable)
+                {
+                    b.InitBullet(hitPoint);
+                    return;
+                }
             }
+            
+            // なければ新規で生成
+            var bullet = _bulletFactory.Create(playerObj, hitPoint);
+            bullets.Add(bullet);
         }
     }
 }

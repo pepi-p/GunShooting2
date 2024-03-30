@@ -11,7 +11,7 @@ namespace Player
         public override void InstallBindings()
         {
             Container
-                .BindFactory<GameObject, Bullet, Bullet.Factory>()
+                .BindFactory<GameObject, Vector3, Bullet, Bullet.Factory>()
                 .FromComponentInNewPrefab(bulletPrefab);
         }
     }

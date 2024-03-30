@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-public class Boss : MonoBehaviour
+public class BossOld : MonoBehaviour
 {
     /*
     [Header("Class")]
@@ -163,34 +163,6 @@ public class Boss : MonoBehaviour
         sePlayer.PlaySound(4);
         Instantiate(bullet, muzzleL.transform.position, Quaternion.LookRotation(-muzzleL.transform.up + muzzleL.transform.right * Random.Range(0.01f, 0.03f) + muzzleL.transform.forward * Random.Range(-0.01f, 0.01f)));
         if (armR[0].gameObject.activeSelf) Instantiate(bullet, muzzleR.transform.position, Quaternion.LookRotation(-muzzleR.transform.up + muzzleR.transform.right * Random.Range(-0.03f, -0.01f) + muzzleR.transform.forward * Random.Range(-0.01f, 0.01f)));
-    }
-
-    public void ShotBossGun(float frame)
-    {
-        StartCoroutine(ShotGun(frame / 60f));
-    }
-    
-    private IEnumerator ShotGun(float length)
-    {
-        foreach (var gun in bossGuns)
-        {
-            gun.randomRange = bossGunRandomRange;
-            gun.shotDamage = bossGunShotDamage;
-        }
-        float endTime = Time.time + length;
-        float shotCoolDown = 0;
-        while (Time.time <= endTime)
-        {
-            shotCoolDown += Time.deltaTime;
-            if (shotCoolDown >= shotIntervalGun)
-                foreach (var gun in bossGuns)
-                {
-                    sePlayer.PlaySound(5);
-                    gun.ShotBullet();
-                    yield return new WaitForSeconds(0.1f);
-                }
-            yield return null;
-        }
     }
 
     public void BossTargetDisable()

@@ -14558,7 +14558,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &482627882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54771,7 +54771,6 @@ GameObject:
   - component: {fileID: 1719774147}
   - component: {fileID: 1719774148}
   - component: {fileID: 1719774149}
-  - component: {fileID: 1719774151}
   - component: {fileID: 1719774150}
   - component: {fileID: 1719774152}
   - component: {fileID: 1719774153}
@@ -54980,20 +54979,6 @@ MonoBehaviour:
   uiRoot: {fileID: 0}
   playerHPbar: {fileID: 0}
   damageImage: {fileID: 0}
---- !u!114 &1719774151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1719774143}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5531313ce79ad8c469ccb054bc3edb38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerUI: {fileID: 1719774150}
-  _raycast: {fileID: 1639318237}
 --- !u!114 &1719774152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55018,7 +55003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b54fbfe158c9adf45ac33897478d0960, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _raycast: {fileID: 1639318237}
+  _bulletSpawner: {fileID: 1399168178}
 --- !u!1 &1723165240
 GameObject:
   m_ObjectHideFlags: 0

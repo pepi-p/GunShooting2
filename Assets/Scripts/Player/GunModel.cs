@@ -16,10 +16,12 @@ namespace Player
         private float shotDamage = 1.0f;   // 与ダメージ
         private bool isReload = false;     // リロード中かどうか
         private bool shotEnable = true;    // 撃てるかどうか
+        
         public float ShotDamage
         {
             get { return shotDamage; }
         }
+        
         public bool ShotEnable
         {
             get { return shotEnable; }
@@ -45,6 +47,7 @@ namespace Player
         public void ReduceAmmo()
         {
             if (ammo > 0) ammo--;
+            else shotEnable = false;
             ammoChanged.OnNext(ammo);
         }
 
@@ -55,7 +58,7 @@ namespace Player
         {
             shotEnable = false;
             await UniTask.Delay(TimeSpan.FromSeconds(shotInterval));
-            if (!isReload) shotEnable = true;
+            if (!isReload && ammo > 0) shotEnable = true;
         }
 
         /// <summary>

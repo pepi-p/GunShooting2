@@ -4,7 +4,7 @@ using UniRx;
 
 namespace Player
 {
-    public class ArduinoInputProvider : IInputProvider
+    public class ArduinoInputProvider
     {
         [SerializeField] private Arduino _arduino;
         

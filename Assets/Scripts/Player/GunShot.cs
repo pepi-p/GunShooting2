@@ -1,26 +1,30 @@
 using UnityEngine;
-using UniRx;
 using Zenject;
+using UniRx;
+using UniRx.Triggers;
 
 namespace Player
 {
+    /// <summary>
+    /// 銃を撃つクラス
+    /// </summary>
     public class GunShot : MonoBehaviour
     {
-        [Inject]
-        private GunModel _gunModel;
-        [SerializeField]
-        private Raycast _raycast;
+        [Inject] private IInputProvider _inputProvider;
+        [Inject] private GunModel _gunModel;
+        [SerializeField] private BulletSpawner _bulletSpawner;
 
-        /// <summary>
-        /// 銃のリロードをするクラス
-        /// </summary>
+        private Camera cam; // メインカメラ
+
         private void Start()
         {
-            // クリック
-            Observable.EveryUpdate()
-                .Where(_ => Input.GetMouseButton(0))
+            // トリガー入力の監視
+            this.UpdateAsObservable()
+                .Where(_ => _inputProvider.GetTrigger())
                 .Subscribe(_ => Shot())
-                .AddTo(gameObject);
+                .AddTo(this);
+
+            cam = Camera.main;
         }
 
         /// <summary>
@@ -31,15 +35,18 @@ namespace Player
             if (!_gunModel.ShotEnable) return;
             _gunModel.ReduceAmmo();
             _gunModel.Cooldown();
-            
-            var hit = _raycast.PointerRay();
-            if (hit.collider != null)
+
+            var isHit = Physics.Raycast(cam.ScreenPointToRay(_inputProvider.GetPointerPos()), out var hit, 50f, 1);
+            if (!isHit) return;
+
+            // 弾のモデルを生成
+            _bulletSpawner.Spawn(hit.point);
+
+            // ダメージを与える
+            if (hit.collider.TryGetComponent<IDamage>(out var target))
             {
-                if (hit.collider.TryGetComponent<IDamage>(out var target))
-                {
-                    target.AddDamage(_gunModel.ShotDamage);
-                    // scoreManager.shotHitCount++;
-                }
+                target.AddDamage(_gunModel.ShotDamage);
+                // scoreManager.shotHitCount++;
             }
         }
     }

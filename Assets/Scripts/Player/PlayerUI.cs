@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace Player
 {
@@ -10,22 +9,22 @@ namespace Player
     /// </summary>
     public class PlayerUI : MonoBehaviour
     {
+        [Inject] private IInputProvider _inputProvider; // 入力
         [SerializeField] private RectTransform reticle; // 照準の座標
         [SerializeField] private RectTransform uiRoot;  // UI全体
         [SerializeField] private Image playerHPbar;     // プレイヤーのHPバー
         [SerializeField] private Image damageImage;     // 被弾時に表示させる画像
 
-        // FIXME: デバッグ用
         private void Update()
         {
-            SetReticlePos(Input.mousePosition);
+            SetReticlePos(_inputProvider.GetPointerPos());
         }
-        
+
         /// <summary>
         /// 照準の座標を変更
         /// </summary>
         /// <param name="pos">座標</param>
-        public void SetReticlePos(Vector3 pos)
+        private void SetReticlePos(Vector3 pos)
         {
             reticle.position = pos;
         }

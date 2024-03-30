@@ -11,8 +11,11 @@ namespace Player
         private float hp;              // hp
         private float maxHP;           // 最大HP
         
-        // プレイヤーが撃てるかどうか
+        // 射撃の許可
         public bool AllowShot { get; set; } = true; 
+        
+        // 被弾の許可
+        public bool AllowDamage { get; set; }
         
         // HPの変更を通知
         private Subject<float> hpChanged;
@@ -38,6 +41,7 @@ namespace Player
         /// <param name="damage">ダメージ</param>
         public void Damage(float damage)
         {
+            if (!AllowDamage) return;
             hp -= damage;
             hpChanged.OnNext(hp);
             // if (hp < 0) ;
