@@ -29,6 +29,8 @@ namespace Boss
         public void NextPhase()
         {
             phase++;
+            
+            // NOTE: GatlingRPhaseとGatlingLPhaseはタイムラインが共通なためスキップ
             if (phase != Phase.GatlingLPhase) _bossTimeline.PlayTimeline(phase);
         }
     }
