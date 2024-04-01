@@ -10,6 +10,7 @@ namespace Boss
     public class BossAnimation : MonoBehaviour
     {
         [Inject] private PlayerStatus _playerStatus;
+        [Inject] private BossPhase _bossPhase;
         [SerializeField] private GatlingAttack _gatlingAttack;
 
         /// <summary>
@@ -28,6 +29,14 @@ namespace Boss
         public void GatlingAttack(float length)
         {
             _gatlingAttack.Attack(length);
+        }
+        
+        /// <summary>
+        /// フェーズを切り替えする
+        /// </summary>
+        public void NextPhase()
+        {
+            _bossPhase.NextPhase();
         }
     }
 }

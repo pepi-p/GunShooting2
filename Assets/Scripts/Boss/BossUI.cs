@@ -15,27 +15,19 @@ namespace Boss
         
         private void Start()
         {
-            /*
             // 左ガトリングのHPを購読
             _bossStatus
-                .GatlingLHPChanged
-                .Subscribe(hp => );
-            
-            // 右ガトリングのHPを購読
-            _bossStatus
-                .GatlingRHPChanged
-                .Subscribe(hp => );
-            
-            // 本体のHPを購読
-            _bossStatus
-                .BodyHPChanged
-                .Subscribe(hp => );
-                */
+                .PhaseHPChanged
+                .Subscribe(hp => DisplayHP(hp.GetHPRate()));
         }
 
-        private void DisplayHP()
+        /// <summary>
+        /// HPバーを更新
+        /// </summary>
+        /// <param name="rate">HP割合</param>
+        private void DisplayHP(float rate)
         {
-            
+            hpBar.fillAmount = rate;
         }
     }
 }

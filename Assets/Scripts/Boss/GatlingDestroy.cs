@@ -11,17 +11,17 @@ namespace Boss
     public class GatlingDestroy : MonoBehaviour
     {
         [SerializeField] private GameObject gatlingR;
-        [SerializeField] private Transform baseArm;
+        [SerializeField] private GameObject newGatlingR;
         
         /// <summary>
         /// 右のガトリングを切り離して，力を加える
         /// </summary>
         public void RightGatlingBreak()
         {
-            baseArm.gameObject.SetActive(false);
-            var rb = gatlingR.GetComponent<Rigidbody>();
-            gatlingR.transform.parent = null;
-            gatlingR.SetActive(true);
+            gatlingR.gameObject.SetActive(false);
+            var rb = newGatlingR.GetComponent<Rigidbody>();
+            newGatlingR.transform.parent = null;
+            newGatlingR.SetActive(true);
             rb.AddForce(this.transform.right * 20 + Vector3.up * 5, ForceMode.Impulse);
 
             RightGatlingDestroy();
@@ -33,9 +33,9 @@ namespace Boss
         private async void RightGatlingDestroy()
         {
             await UniTask.Delay(System.TimeSpan.FromSeconds(5));
-            gatlingR.GetComponent<CapsuleCollider>().isTrigger = true;
+            newGatlingR.GetComponent<CapsuleCollider>().isTrigger = true;
             await UniTask.Delay(System.TimeSpan.FromSeconds(2));
-            gatlingR.SetActive(false);
+            newGatlingR.SetActive(false);
         }
     }
 }

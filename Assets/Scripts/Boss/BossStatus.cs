@@ -37,23 +37,6 @@ namespace Boss
         {
             phaseHP.ReduceHP(damage);
             phaseHPChanged.OnNext(phaseHP);
-            
-            // フェーズの切り替え
-            if (phaseHP.GetHPRate() <= 0)
-            {
-                _bossPhase.NextPhase();
-                
-                // パーツの切り替え
-                switch (_bossPhase.phase)
-                {
-                    case Phase.GatlingRPhase:
-                        phaseHP = hpList[(int)PartType.LeftGatling];
-                        break;
-                    case Phase.GatlingLPhase:
-                        phaseHP = hpList[(int)PartType.Body];
-                        break;
-                }
-            }
         }
     }
 }

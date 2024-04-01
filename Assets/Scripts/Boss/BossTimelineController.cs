@@ -11,21 +11,8 @@ namespace Boss
     /// </summary>
     public class BossTimelineController : MonoBehaviour
     {
-        [Inject] private BossPhase _bossPhase;
-        [Inject] private BossStatus _bossStatus;
         [SerializeField] private PlayableDirector director;
         [SerializeField] private TimelineAsset[] timelineAssets;
-        
-        private void Start()
-        {
-            // 左ガトリングのHPが0になったときに形態変化ムービーを再生
-            /*
-            _bossStatus
-                .PhaseHPChanged
-                .Where(hp => (hp <= 0 && _bossPhase.phase != Phase.GatlingRPhase))
-                .Subscribe(_ => PlayTimeline(_bossPhase.phase));
-                */
-        }
 
         /// <summary>
         /// タイムラインを再生する
@@ -62,14 +49,6 @@ namespace Boss
         public void TimelineLoop(float frame)
         {
             director.time = frame / 60f;
-        }
-
-        /// <summary>
-        /// フェーズを切り替えする
-        /// </summary>
-        public void NextPhase()
-        {
-            _bossPhase.NextPhase();
         }
     }
 }
